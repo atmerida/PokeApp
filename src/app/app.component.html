@@ -1,1 +1,69 @@
 <mat-toolbar>Poke App</mat-toolbar>
+<div class="px-4 px-lg-0">
+    <div class="pb-5">
+        <div class="container">
+            <div class="row py-3 p-4 bg-white rounded shadow-sm">
+                <div class="col-lg-6">
+                    <div class="p-2">
+                        <div class="input-group mb-4 border rounded-pill p-2">
+                            <input type="text" placeholder="Pokemon" [(ngModel)]="name" aria-describedby="button-addon3" class="form-control border-0">
+                            <div class="input-group-append border-0">
+                                <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill" (click)="getPokemon()">
+                                    <i class="fa fa-gift mr-2"></i>Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="error && listPokemon.length == 0">
+                <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+                    {{error}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="p-2 px-3 text-uppercase">Image</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Name</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Type</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Number</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let pokemon of listPokemon">
+                                    <th scope="row" class="border-0">
+                                        <div class="p-2">
+                                            <img src="{{pokemon.sprites.front_default}}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                        </div>
+                                    </th>
+                                    <td class="border-0 align-middle">
+                                        <strong>{{pokemon.name}}</strong>
+                                    </td>
+                                    <td class="border-0 align-middle">
+                                        <strong>{{pokemon.types[0].type.name}}</strong>
+                                    </td>
+                                    <td class="border-0 align-middle">
+                                        <strong>{{pokemon.order}}</strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- End -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
